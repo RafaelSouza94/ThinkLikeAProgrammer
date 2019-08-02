@@ -1,6 +1,8 @@
 // ThinkLikeAProgrammer.cpp : All the code from the Think Like a Programmer book.
 
 #include <iostream>
+#include <cmath>
+
 using namespace std;
 
 enum mode_type {
@@ -211,18 +213,229 @@ void cipher() {
     } while (digit_char != 10);
 }
 
+void two_one() {
+
+    cout << "------------- Exercise 2.1.\n";
+    for (int counter = 4; counter > 0; counter--) {
+        for (int spaces = 4 - counter; spaces > 0; spaces--) {
+            cout << " ";
+        }
+        for (int hashes = counter * 2; hashes > 0; hashes--) {
+            cout << "#";
+        }
+        cout << "\n";
+    }
+}
+
+void two_two() {
+
+    cout << "------------- Exercise 2.2.\n";
+    for (int counter = 1; counter < 5; counter++) {
+        for (int spaces = 4 - counter; spaces > 0; spaces--) {
+            cout << " ";
+        }
+        for (int hashes = counter * 2; hashes > 0; hashes--) {
+            cout << "#";
+        }
+        cout << "\n";
+    }
+
+    for (int counter = 4; counter > 0; counter--) {
+        for (int spaces = 4 - counter; spaces > 0; spaces--) {
+            cout << " ";
+        }
+        for (int hashes = counter * 2; hashes > 0; hashes--) {
+            cout << "#";
+        }
+        cout << "\n";
+    }
+}
+
+void two_three() {
+
+    cout << "------------- Exercise 2.3.\n";
+    int hash_count = 0;
+    int space_count = 0;
+    for (int counter = 1; counter < 5; counter++) {
+        for (int space_1 = counter - 1; space_1 > 0; space_1--) {
+            cout << " ";
+            space_count = (counter - 1) * 2;           
+        }
+        for (int hash_before = counter; hash_before > 0; hash_before--) {
+            cout << "#";
+            hash_count = counter * 2;
+        }
+        for (int space_2 = 14 - hash_count - space_count; space_2 > 0; space_2--) {
+            cout << " ";
+        }
+        for (int hash_after = counter; hash_after > 0; hash_after--) {
+            cout << "#";
+        }
+        for (int space_3 = counter - 1; space_3 > 0; space_3--) {
+            cout << " ";
+        }
+        cout << "\n";
+    }
+
+    for (int counter = 4; counter > 0; counter--) {
+        space_count = (counter - 1) * 2;
+        hash_count = counter * 2;
+        for (int space_1 = counter - 1; space_1 > 0; space_1--) {
+            cout << " ";
+        }
+        for (int hash_before = counter; hash_before > 0; hash_before--) {
+            cout << "#";            
+        }
+        for (int space_2 = 14 - hash_count - space_count; space_2 > 0; space_2--) {
+            cout << " ";
+        }
+        for (int hash_after = counter; hash_after > 0; hash_after--) {
+            cout << "#";
+        }
+        for (int space_3 = counter - 1; space_3 > 0; space_3--) {
+            cout << " ";
+        }
+        cout << "\n";
+    }
+}
+
+void two_four() {
+
+    cout << "------------- Exercise 2.4.\n";
+    int hash_count = 2;
+    int space_count = 0;
+    for (int counter = 1; counter < 5; counter++) {
+        space_count = (counter - 1) * 2;
+        for (int space_1 = counter - 1; space_1 > 0; space_1--) {
+            cout << " ";
+        }
+        cout << "#";
+        for (int space_2 = 8 - hash_count - space_count; space_2 > 0; space_2--) {
+            cout << " ";
+        }
+        cout << "#";
+        for (int space_3 = counter - 1; space_3 > 0; space_3--) {
+            cout << " ";
+        }
+        cout << "\n";
+    }
+
+    hash_count = 2;
+    space_count = 0;
+    for (int counter = 4; counter > 0; counter--) {
+        space_count = (counter - 1) * 2;
+        for (int space_1 = counter - 1; space_1 > 0; space_1--) {
+            cout << " ";
+        }
+        cout << "#";
+        for (int space_2 = 8 - hash_count - space_count; space_2 > 0; space_2--) {
+            cout << " ";
+        }
+        cout << "#";
+        for (int space_3 = counter - 1; space_3 > 0; space_3--) {
+            cout << " ";
+        }
+        cout << "\n";
+    }
+}
+
+void two_five() {
+
+    cout << "------------- Exercise 2.5.\n";
+    cout << "Enter an ISBN number for validation: ";
+
+    int digit;
+    int sum = 0;
+
+    for (int position = 1; position <= 13; position++) {
+        digit = cin.get() - '0';
+        if (position % 2 == 0) {
+            sum += digit * 3;
+        }
+        else {
+            sum += digit;
+        }
+    }
+
+    if (sum % 10 == 0) {
+        cout << "ISBN valid.";
+    }
+    else {
+        cout << "ISBN invalid.";
+    }
+}
+
+int decimal_to_binary(int number) {
+
+    int result = 0;
+    int counter = 1;
+
+    while (number > 0) {
+
+        result += (number % 2) * counter;
+        number /= 2;
+        counter *= 10;
+    }
+    return result;
+}
+
+void binary_to_decimal() {
+
+    int result = 0;
+    int position = 0;
+    char digit = '0';
+
+    cout << "Enter the number to be converted: ";
+
+    while (digit != 32) {
+        digit = cin.get();
+        if (digit == '1') {
+            result += pow(2, position);
+        }
+        position++;
+        cout << "Result: " << result << " Position: " << position << endl;
+    }
+
+    cout << "Decimal version: " << result << ".\n";
+}
+
+void two_six() {
+
+    char type;
+    int number;
+
+    cout << "------------- Exercise 2.6.\n";
+    binary_to_decimal();
+    cout << "(B)inary or (D)ecimal? ";  
+    type = cin.get();
+
+    if (type == 'b') {
+        cout << "Enter the number to be converted: ";
+        cin >> number;
+        cout << "Binary version: " << decimal_to_binary(number) << ".\n";
+    }
+    else {
+        cin.clear();
+        binary_to_decimal();
+    } 
+}
+
 int main() {
 
     cout << "Chapter 2 code\n";
     //half_a_square();
     //sideways_triangle();
-    
     //luhns_formula();
     //pos_or_neg();
-
-    cipher();
+    //cipher();
     //converter(3);
     //change_mode();
+    //two_one();
+    //two_two();
+    //two_three();
+    //two_four();
+    //two_five();
+    two_six();
 }
 
 
