@@ -5,6 +5,7 @@
 
 using namespace std;
 
+/************************** CHAPTER 2 CODE *****************************************************
 enum mode_type {
     LOWERCASE,
     UPPERCASE,
@@ -419,9 +420,11 @@ void two_six() {
         binary_to_decimal();
     } 
 }
+**************************************** END CHAPTER 2 CODE */
 
 int main() {
 
+	/******* CHAPTER 2 CODE
     cout << "Chapter 2 code\n";
     //half_a_square();
     //sideways_triangle();
@@ -436,6 +439,7 @@ int main() {
     //two_four();
     //two_five();
     two_six();
+	********* END CHAPTER 2 CODE  */
 }
 
 
