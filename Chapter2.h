@@ -6,9 +6,9 @@ using namespace std;
 class Chapter2 {
 
 	enum mode_type {
-    LOWERCASE,
-    UPPERCASE,
-    PUNCTUATION
+        LOWERCASE,
+        UPPERCASE,
+        PUNCTUATION
 	};
 
 public:
