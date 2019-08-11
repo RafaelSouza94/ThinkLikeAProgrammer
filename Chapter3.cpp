@@ -32,10 +32,29 @@ void Chapter3::finding_mode() {
         }
     }
 
-    cout << "Mode of the array: " << most_frequent << endl;
+    cout << "Mode of the array using qsort: " << most_frequent << endl;
+
+    int histogram[ARRAY_SIZE] = { 0 };
+    //histogram = get_histogram (survey_data, ARRAY_SIZE);
 
 
 
+}
+
+int* Chapter3::get_histogram (int* array, int array_size) {
+
+    const int MAX_RESPONSE = 10;
+    int histogram[MAX_RESPONSE];
+
+    for (int i = 0; i < MAX_RESPONSE; i++) {
+        histogram[i] = 0;
+    }
+
+    for (int i = 0; i < array_size; i++) {
+        histogram[array[i] - 1]++;
+    }
+
+    return histogram;
 }
 
 int compare_func (const void* a, const void* b) {
