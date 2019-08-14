@@ -8,18 +8,12 @@ void Chapter3::finding_mode() {
 
     const int ARRAY_SIZE = 12;
 
-    int survey_data[ARRAY_SIZE] = {4, 7, 3, 8, 9, 7, 3, 9, 9, 3, 3, 10};
+    int survey_data[ARRAY_SIZE] = { 4, 7, 3, 8, 9, 7, 3, 9, 9, 3, 3, 10 };
     int most_frequent = 0;
     int highest_frequency = 0;
     int current_frequency = 0;
 
-    qsort (survey_data, ARRAY_SIZE, sizeof (int), compare_func);
-
-    /*for (int i = 0; i < ARRAY_SIZE; i++) {
-        cout << survey_data[i] << " ";
-    }
-
-    cout << "\n";*/
+    qsort(survey_data, ARRAY_SIZE, sizeof(int), compare_func);
 
     for (int i = 0; i < ARRAY_SIZE; i++) {
         current_frequency++;
@@ -34,17 +28,33 @@ void Chapter3::finding_mode() {
 
     cout << "Mode of the array using qsort: " << most_frequent << endl;
 
-    int histogram[ARRAY_SIZE] = { 0 };
-    //histogram = get_histogram (survey_data, ARRAY_SIZE);
+    int* histogram;
+    
+    most_frequent = 0;
+    histogram = get_histogram(survey_data, ARRAY_SIZE);
+        
 
+    /********** Print the histogram
+    cout << "Printing histogram" << endl;
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        cout << "Value for " << (i + 1) << ": " << *(histogram + i) << endl;
+    }
+    */
 
-
+    // Find the mode of the array using the histogram
+    for (int i = 1; i < MAX_RESPONSE; i++) {
+        if (*(histogram + i) > * (histogram + most_frequent)) {
+            most_frequent = i;
+        }
+    }
+    most_frequent++;
+    cout << "Mode of the array using the histogram: " << most_frequent << endl;
 }
-
-int* Chapter3::get_histogram (int* array, int array_size) {
+   
+int * Chapter3::get_histogram (int* array, int array_size) {
 
     const int MAX_RESPONSE = 10;
-    int histogram[MAX_RESPONSE];
+    static int histogram[MAX_RESPONSE];
 
     for (int i = 0; i < MAX_RESPONSE; i++) {
         histogram[i] = 0;
