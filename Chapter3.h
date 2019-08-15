@@ -12,5 +12,6 @@ public:
     void finding_mode();
     void insertion_sort (int*, int);
     int* get_histogram (int*, int);
+    void license_cost (int, double);
 };
 

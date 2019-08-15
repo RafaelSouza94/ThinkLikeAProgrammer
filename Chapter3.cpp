@@ -83,3 +83,20 @@ void Chapter3::insertion_sort (int *array, int ARRAY_SIZE) {
         }
     }
 }
+
+void Chapter3::license_cost (int category, double gross_sales) {
+
+    const int NUM_CATEGORIES = 4;
+    const double category_thresholds[NUM_CATEGORIES] = { 0.0, 50000.0, 150000.0, 500000.0 };
+    const double license_cost[NUM_CATEGORIES] = { 50.0, 200.0, 1000.0, 5000.0 };
+
+    double cost;
+
+    while (category < NUM_CATEGORIES && category_thresholds[category] <= gross_sales) {
+        category++;
+    }
+
+    cost = license_cost[category - 1];
+
+    cout << "Cost of business category " << category << " with gross sales of " << gross_sales << " getting a license is " << cost;
+}

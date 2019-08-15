@@ -107,6 +107,8 @@ void Chapter2::pos_or_neg() {
 
 void Chapter2::converter(int number, mode_type mode) {
 
+    const char punctuation[8] = { '!', '?', ',', '.', ' ', ';', '"', '\'' };
+
     char output_char = ' ';
     if (mode == UPPERCASE) {
         output_char = number + 'A' - 1;
@@ -115,6 +117,7 @@ void Chapter2::converter(int number, mode_type mode) {
         output_char = number + 'a' - 1;
     }
     else if (mode == PUNCTUATION) {
+        /* method from chapter 2 - switch
         switch (number) {
         case 1:
             output_char = '!';
@@ -142,7 +145,9 @@ void Chapter2::converter(int number, mode_type mode) {
             break;
         default:
             break;
-        }
+        }*/
+        /* method from chapter 3 - fixed array */
+        output_char = punctuation[number - 1];
     }
 
     cout << output_char;

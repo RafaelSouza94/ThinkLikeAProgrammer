@@ -12,7 +12,7 @@ int main() {
     Chapter2 ch2 = Chapter2();
     Chapter3 ch3 = Chapter3();
 
-    ch3.finding_mode();
+    ch3.license_cost(2, 2000.0);
 }
 
 
