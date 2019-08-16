@@ -7,14 +7,22 @@ using namespace std;
 class Chapter3 {
 
 private:
-    const int MAX_RESPONSE = 10;
+    const static int MAX_RESPONSE = 10;
+    const static int NUM_AGENTS = 4;
+    const static int NUM_MONTHS = 12;
+
+    int sales[NUM_AGENTS][NUM_MONTHS] = {
+        {1856, 498, 30924, 87478, 328, 2653, 387, 3754, 387587, 2873, 276, 32},
+        {5865, 5456, 3983, 6464, 9957, 4785, 3875, 3838, 4959, 1122, 7766, 2534},
+        {23, 55, 67, 99, 265, 376, 232, 223, 4546, 564, 4544, 3434}
+    };
     struct student {
         int grade;
         int student_id;
         string name;
     };
    
-    student student_array[10] = {
+    student student_array[MAX_RESPONSE] = {
     {87, 10001, "Fred"},
     {28, 10002, "Tom"},
     {100, 10003, "Alistair"},
@@ -36,5 +44,6 @@ public:
     void highest_sales();
     void dynamic_survey();
     void three_one ();
+    void three_two();
 };
 
