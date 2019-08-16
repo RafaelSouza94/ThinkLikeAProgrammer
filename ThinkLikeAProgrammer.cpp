@@ -12,7 +12,7 @@ int main() {
     Chapter2 ch2 = Chapter2();
     Chapter3 ch3 = Chapter3();
 
-    ch3.dynamic_survey();
+    ch3.three_one();
 }
 
 
