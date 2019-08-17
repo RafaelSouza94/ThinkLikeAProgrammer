@@ -10,6 +10,7 @@ private:
     const static int MAX_RESPONSE = 10;
     const static int NUM_AGENTS = 4;
     const static int NUM_MONTHS = 12;
+    const static int ALPHABET_SIZE = 26;
 
     int sales[NUM_AGENTS][NUM_MONTHS] = {
         {1856, 498, 30924, 87478, 328, 2653, 387, 3754, 387587, 2873, 276, 32},
@@ -22,6 +23,8 @@ private:
         string name;
     };
    
+    const char alphabet[ALPHABET_SIZE] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
     student student_array[MAX_RESPONSE] = {
     {87, 10001, "Fred"},
     {28, 10002, "Tom"},
@@ -45,5 +48,8 @@ public:
     void dynamic_survey();
     void three_one ();
     void three_two();
+    void three_three (int[], int);
+    void three_four ();
+    void three_five ();
 };
 

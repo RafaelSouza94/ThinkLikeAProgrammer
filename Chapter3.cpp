@@ -233,14 +233,122 @@ double array_median(int int_array[], int ARRAY_SIZE) {
 }
 
 void Chapter3::three_two() {
-
-    qsort(sales[0][NUM_MONTHS], ARRAY_SIZE, sizeof(int), compare_func);
-    double highest_average = array_average(sales[0], 12);
+    
+    qsort(sales[0], NUM_MONTHS, sizeof(int), compare_func);
+    double highest_median = array_median(sales[0], NUM_MONTHS);
     for (int agent = 1; agent < NUM_AGENTS; agent++) {
-        double agent_average = array_average(sales[agent], 12);
-        if (agent_average > highest_average)
-            highest_average = agent_average;
+        qsort (sales[agent], NUM_MONTHS, sizeof (int), compare_func);
+        double agent_median = array_median(sales[agent], NUM_MONTHS);
+        if (agent_median > highest_median)
+            highest_median = agent_median;
     }
 
-    cout << "Highest average monthly sales: " << highest_average << endl;
+    cout << "Highest median monthly sales: " << highest_median << endl;
 }
+
+void Chapter3::three_three (int int_array[], int size) {
+
+    /* arrays for testing 
+    int array_three_sorted[8] = { 1, 2, 3, 4, 5, 6, 7, 8 };
+    int array_three_unsorted[8] = { 1, 2, 3, 4, 5, 8, 7, 9 };
+    int array_three_unsorted_decrescent[8] = { 9, 8, 7, 6, 5, 4, 5, 3 };
+    int array_three_sorted_decrescent[8] = { 8, 7, 6, 5, 4, 3, 2, 1 };
+    */
+
+    bool sorted = true;
+    bool crescent = true;
+    if (int_array[0] > int_array[1]) {
+        crescent = false;
+    }
+
+    for (int i = 1; i < size - 2; i++) {
+       if (crescent) {
+             if (int_array[i] > int_array[i + 1]) {
+                sorted = false;
+                break;
+            }
+        } else {
+           if (int_array[i] < int_array[i + 1]) {
+                sorted = false;
+                break;
+            }
+        }
+    }
+
+    if (sorted) {
+        cout << "Array is sorted ";
+        if (crescent) {
+            cout << "and crescent." << endl;
+        } else {
+            cout << "and decrescent." << endl;
+        }
+    }
+    else
+        cout << "Array is NOT sorted." << endl;
+}
+
+void Chapter3::three_four () {
+
+    cout << "Enter message to be coded: ";
+
+    vector<char> message;
+    char character = ' ';
+    int a = 97;
+    int cipher = 5;
+
+    message.reserve (30);
+
+    while (true){   
+        character = cin.get ();
+        if (character == 10)
+            break;
+        if (character == 32)
+            continue;
+        int index = int (character) - a + cipher;
+        if (index > ALPHABET_SIZE) {
+            index -= ALPHABET_SIZE;
+        }
+        //cout << "[DEBUG] Character: " << character << " value: " << int (character) << " index: " << index << endl;
+        message.push_back (alphabet[index]);
+    } 
+
+    cout << "Coded message: ";
+    for (int i = 0; i < message.size(); i++) {
+        cout << message[i];
+    }
+
+    cout << endl;
+}
+
+void Chapter3::three_five () {
+
+    cout << "Enter message to be decoded: ";
+
+    vector<char> message;
+    char character = ' ';
+    int A = 65;
+    int cipher = 5;
+
+    message.reserve (30);
+
+    while (true) {
+        character = cin.get ();
+        if (character == 10)
+            break;
+        if (character == 32)
+            continue;
+        int index = int (character) - A - cipher;
+        if (index < 0) {
+            index += ALPHABET_SIZE;
+        }
+        message.push_back (alphabet[index]);
+    }
+
+    cout << "Orignal message: ";
+    for (int i = 0; i < message.size (); i++) {
+        cout << message[i];
+    }
+
+    cout << endl;
+}
+
