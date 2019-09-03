@@ -14,7 +14,7 @@ int main() {
     Chapter3 ch3 = Chapter3();
     Chapter4 ch4 = Chapter4();
 
-    ch4.test_ref_param ();
+    ch4.append_tester();
 }
 
 
