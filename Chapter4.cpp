@@ -106,6 +106,8 @@ void Chapter4::add_record(student_collection& sc, int student_number, int grade)
 
 double Chapter4::average_record(student_collection sc) {
 
+    if (sc == NULL) return 0;
+
     int count = 0;
     double sum = 0;
     list_node* loop_ptr = sc;
