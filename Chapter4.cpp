@@ -93,3 +93,51 @@ void Chapter4::concatenate_tester() {
     cout << "New string: " << c << endl;
     cout << "Pointers:\na:" << (void*)a << " c: " << (void*)c << endl;
 }
+
+void Chapter4::add_record(student_collection& sc, int student_number, int grade) {
+    // Adds a new node to the beginning of the list
+
+    list_node* new_node = new list_node;
+    new_node->student_number = student_number;
+    new_node->grade = grade;
+    new_node->next = sc;
+    sc = new_node;
+}
+
+double Chapter4::average_record(student_collection sc) {
+
+    int count = 0;
+    double sum = 0;
+    list_node* loop_ptr = sc;
+
+    while (loop_ptr != NULL) {
+        sum += loop_ptr->grade;
+        count++;
+        loop_ptr = loop_ptr->next;
+    }
+
+    double average = sum / count;
+    return average;
+}
+
+void Chapter4::linked_list() {
+
+    Chapter4::student_collection sc;
+    Chapter4::list_node* node1 = new Chapter4::list_node;
+    Chapter4::list_node* node2 = new Chapter4::list_node;
+    Chapter4::list_node* node3 = new Chapter4::list_node;
+
+    node1->student_number = 1001; node1->grade = 78;
+    node2->student_number = 1012; node2->grade = 93;
+    node3->student_number = 1076; node3->grade = 85;
+    sc = node1;
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = NULL;
+    node1 = node2 = node3 = NULL;  // To avoid cross-linking   
+
+    add_record(sc, 1274, 91);
+
+    int avg = average_record(sc);
+}
+
