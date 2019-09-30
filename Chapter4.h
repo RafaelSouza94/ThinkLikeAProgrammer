@@ -16,5 +16,7 @@ public:
     char character_at (array_string, int);
     void append (array_string&, char);
     void append_tester ();
+    void concatenate(array_string&, array_string);
+    void concatenate_tester();
 };
 

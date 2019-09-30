@@ -14,7 +14,7 @@ int main() {
     Chapter3 ch3 = Chapter3();
     Chapter4 ch4 = Chapter4();
 
-    ch4.append_tester();
+    ch4.concatenate_tester();
 }
 
 
