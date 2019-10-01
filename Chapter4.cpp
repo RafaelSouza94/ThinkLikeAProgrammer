@@ -143,3 +143,46 @@ void Chapter4::linked_list() {
     int avg = average_record(sc);
 }
 
+Chapter4::array_string Chapter4::four_two(array_string string, int position, int length) {
+
+    array_string new_string = new char[length + 1];
+
+    for (int i = 0; i < length; i++) {
+        //cout << "[DEBUG] i: " << i << " position: " << position << " length: " << length << " string[i+p-1]: " << string[i + (position - 1)] << endl;
+        new_string[i] = string[i + (position - 1)];
+    }
+
+    new_string[length] = 0;
+
+    return new_string;
+}
+
+void Chapter4::four_three(array_string& source, array_string target, array_string replace_text) {
+
+    int length_source = length(source);
+    int length_target = length(target);
+    int length_replace = length(replace_text);
+    int length_diff = length_target - length_replace;
+    bool change = false;
+    vector<int> positions;
+    array_string new_string = new char[length_source + length_target + length_replace];
+
+    positions.reserve(30);
+
+    for (int i = 0; i < length_source; i++) {
+        if (source[i] == target[0]) {
+            cout << "Match:\ti: " << i << "\tsource: " << source[i] << "\ttarget: " << target[0] << endl;
+            positions.push_back(i);
+            for (int j = 1; j < length_target; j++) {
+                if (source[i + j] != target[j]) {
+                    cout << "No match" << endl ;
+                    break;
+                }
+                else {
+                    cout << "Match:\ti: " << i << "\tj: " << j << "\tsource: " << source[i + j] << "\ttarget: " << target[j] << endl;
+                    positions.push_back(i+j);
+                }
+            }
+        }
+    }
+}

@@ -12,7 +12,7 @@ private:
     struct list_node {
         int student_number;
         int grade;
-        list_node next*;
+        list_node *next;
     };
     typedef list_node* student_collection;
 
@@ -27,5 +27,7 @@ public:
     void linked_list();
     void add_record(student_collection&, int, int);
     double average_record(student_collection);
+    array_string four_two(array_string, int, int);
+    void four_three(array_string&, array_string, array_string);
 };
 
