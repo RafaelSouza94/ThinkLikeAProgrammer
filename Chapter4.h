@@ -15,6 +15,7 @@ private:
         list_node *next;
     };
     typedef list_node* student_collection;
+    typedef char* new_array;
 
 
 public:
@@ -29,5 +30,6 @@ public:
     double average_record(student_collection);
     array_string four_two(array_string, int, int);
     void four_three(array_string&, array_string, array_string);
+    void four_four();
 };
 

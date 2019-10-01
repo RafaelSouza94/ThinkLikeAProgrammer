@@ -164,6 +164,7 @@ void Chapter4::four_three(array_string& source, array_string target, array_strin
     int length_replace = length(replace_text);
     int counter = 0;
     int ocurrencies;
+    //int array_size;
     vector<int> positions;
 
     positions.reserve(30);
@@ -209,6 +210,25 @@ void Chapter4::four_three(array_string& source, array_string target, array_strin
     }
     
     new_string[counter] = 0;
-
-    cout << "New String: " << new_string << endl;
+    source = new_string;
+    //cout << "New String: " << source << endl;
 }
+
+void four_four_output(char * string) {
+
+    int size = string[0];
+
+    for (int i = 1; i <= size; i++) {
+        cout << string[i];
+    }
+}
+
+void Chapter4::four_four() {
+
+    new_array string = new char[5];
+    string[0] = 4; string[1] = 't'; string[2] = 'e'; string[3] = 's'; string[4] = 't';
+    cout << "String: ";
+    four_four_output(string);
+    cout << endl;
+}
+
