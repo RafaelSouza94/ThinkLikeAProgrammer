@@ -162,11 +162,9 @@ void Chapter4::four_three(array_string& source, array_string target, array_strin
     int length_source = length(source);
     int length_target = length(target);
     int length_replace = length(replace_text);
-    int length_diff = length_target - length_replace;
     int counter = 0;
-    bool change = false;
+    int ocurrencies;
     vector<int> positions;
-    array_string new_string = new char[length_source + length_target + length_replace];
 
     positions.reserve(30);
 
@@ -189,19 +187,23 @@ void Chapter4::four_three(array_string& source, array_string target, array_strin
         }
     }
 
+    ocurrencies = positions.size() / length_target;
+    array_string new_string = new char[ocurrencies]; 
+    cout << "ocurrencies: " << ocurrencies << endl;
+
     for (int i = 0; i < length_source; i++) {
-        cout << "[DEBUG] i: " << i << " source[i]: " << source[i] << endl;
+        //cout << "[DEBUG] i: " << i << " source[i]: " << source[i] << endl;
         if (find(positions.begin(), positions.end(), i) != positions.end()) {
             for (int j = 0; j < length_replace; j++) {
                 new_string[counter] = replace_text[j];
-                cout << "[DEBUG] Inside the for - i: " << i << " j: " << j << " counter: " << counter << " new_string[i+j]: " << new_string[counter] << " replacetext[j]: " << replace_text[j] << endl;
+                //cout << "[DEBUG] Inside the for - i: " << i << " j: " << j << " counter: " << counter << " new_string[i+j]: " << new_string[counter] << " replacetext[j]: " << replace_text[j] << endl;
                 counter++;
             }
             i += length_target - 1;
         }
         else {
             new_string[counter] = source[i];
-            cout << "[DEBUG] Inside the else - i: " << i << " counter: " << counter << " new_string[counter]: " << new_string[counter] << " source[i]: " << source[i] << endl;
+            //cout << "[DEBUG] Inside the else - i: " << i << " counter: " << counter << " new_string[counter]: " << new_string[counter] << " source[i]: " << source[i] << endl;
             counter++;
         }
     }
