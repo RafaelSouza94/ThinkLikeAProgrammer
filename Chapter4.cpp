@@ -163,26 +163,50 @@ void Chapter4::four_three(array_string& source, array_string target, array_strin
     int length_target = length(target);
     int length_replace = length(replace_text);
     int length_diff = length_target - length_replace;
+    int counter = 0;
     bool change = false;
     vector<int> positions;
     array_string new_string = new char[length_source + length_target + length_replace];
 
     positions.reserve(30);
 
+    cout << "Original string: " << source << endl;
+
     for (int i = 0; i < length_source; i++) {
         if (source[i] == target[0]) {
-            cout << "Match:\ti: " << i << "\tsource: " << source[i] << "\ttarget: " << target[0] << endl;
+            //cout << "Match:\ti: " << i << "\tsource: " << source[i] << "\ttarget: " << target[0] << endl;
             positions.push_back(i);
             for (int j = 1; j < length_target; j++) {
                 if (source[i + j] != target[j]) {
-                    cout << "No match" << endl ;
+                    //cout << "No match" << endl ;
                     break;
                 }
                 else {
-                    cout << "Match:\ti: " << i << "\tj: " << j << "\tsource: " << source[i + j] << "\ttarget: " << target[j] << endl;
+                    //cout << "Match:\ti: " << i << "\tj: " << j << "\tsource: " << source[i + j] << "\ttarget: " << target[j] << endl;
                     positions.push_back(i+j);
                 }
             }
         }
     }
+
+    for (int i = 0; i < length_source; i++) {
+        cout << "[DEBUG] i: " << i << " source[i]: " << source[i] << endl;
+        if (find(positions.begin(), positions.end(), i) != positions.end()) {
+            for (int j = 0; j < length_replace; j++) {
+                new_string[counter] = replace_text[j];
+                cout << "[DEBUG] Inside the for - i: " << i << " j: " << j << " counter: " << counter << " new_string[i+j]: " << new_string[counter] << " replacetext[j]: " << replace_text[j] << endl;
+                counter++;
+            }
+            i += length_target - 1;
+        }
+        else {
+            new_string[counter] = source[i];
+            cout << "[DEBUG] Inside the else - i: " << i << " counter: " << counter << " new_string[counter]: " << new_string[counter] << " source[i]: " << source[i] << endl;
+            counter++;
+        }
+    }
+    
+    new_string[counter] = 0;
+
+    cout << "New String: " << new_string << endl;
 }
