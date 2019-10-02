@@ -16,7 +16,8 @@ private:
     };
     typedef list_node* student_collection;
     typedef char* new_array;
-
+    void print_list(student_collection);
+    void remove_record(student_collection&, int);
 
 public:
     void test_ref_param ();
@@ -33,6 +34,6 @@ public:
     void four_four();
     void funct1(char*);
     void funct2(char*&);
-    void funct3(char);
+    void funct3(char); 
 };
 

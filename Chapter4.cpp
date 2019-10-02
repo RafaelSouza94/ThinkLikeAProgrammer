@@ -122,6 +122,32 @@ double Chapter4::average_record(student_collection sc) {
     return average;
 }
 
+void Chapter4::print_list(student_collection sc) {
+
+    list_node* loop_ptr = sc;
+
+    while (loop_ptr != NULL) {
+        cout << "Student Number: " << loop_ptr->student_number;
+        cout << "\tGrade: " << loop_ptr->grade << endl;
+        loop_ptr = loop_ptr->next;
+    }
+}
+
+void Chapter4::remove_record(student_collection& sc, int number) {
+
+    list_node* loop_ptr = sc;
+    list_node* previous_ptr = sc;
+
+    while (loop_ptr != NULL) {
+        if (loop_ptr->student_number == number) {
+            previous_ptr->next = loop_ptr->next;
+            return;
+        }
+        previous_ptr = loop_ptr;
+        loop_ptr = loop_ptr->next;
+    }
+}
+
 void Chapter4::linked_list() {
 
     Chapter4::student_collection sc;
@@ -138,9 +164,19 @@ void Chapter4::linked_list() {
     node3->next = NULL;
     node1 = node2 = node3 = NULL;  // To avoid cross-linking   
 
+    cout << "Current list: " << endl ;
+    print_list(sc);
+    cout << endl;
     add_record(sc, 1274, 91);
+    cout << "Added record: " << endl;
+    print_list(sc);
+    cout << endl;
+    cout << "Removed record: " << endl;
+    remove_record(sc, 1012);
+    print_list(sc);
+    cout << endl;
 
-    int avg = average_record(sc);
+    //int avg = average_record(sc);
 }
 
 Chapter4::array_string Chapter4::four_two(array_string string, int position, int length) {
