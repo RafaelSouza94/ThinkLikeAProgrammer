@@ -31,5 +31,8 @@ public:
     array_string four_two(array_string, int, int);
     void four_three(array_string&, array_string, array_string);
     void four_four();
+    void funct1(char*);
+    void funct2(char*&);
+    void funct3(char);
 };
 

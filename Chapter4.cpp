@@ -210,6 +210,7 @@ void Chapter4::four_three(array_string& source, array_string target, array_strin
     }
     
     new_string[counter] = 0;
+    delete[] source;
     source = new_string;
     //cout << "New String: " << source << endl;
 }
@@ -223,12 +224,72 @@ void four_four_output(char * string) {
     }
 }
 
+void four_four_append(char* & string, char c) {
+
+    int length = string[0];
+    char* new_string = new char[length];
+
+    for (int i = 1; i <= length; i++) {
+        new_string[i] = string[i];
+    }
+
+    new_string[0] = length + 1;
+    new_string[length + 1] = c;
+
+    delete[] string;
+    string = new_string;
+}
+
+char four_four_character_at(char *string, int position) { return string[position]; }
+
+void four_four_concatenate(char*& source, char* string) {
+
+    int source_length = source[0];
+    int string_length = string[0];
+    int final_size = source_length + string_length - 1;
+    char* new_string = new char[final_size];
+
+    new_string[0] = final_size;
+
+    for (int i = 1; i <= source_length; i++) {
+        new_string[i] = source[i];
+    }
+
+    for (int i = 1; i <= string_length; i++) {
+        new_string[i + (source_length - 1)] = string[i];
+    }
+
+    //delete[] source;
+    source = new_string;
+}
+
 void Chapter4::four_four() {
 
     new_array string = new char[5];
+    new_array string_2 = new char[4];
+    
     string[0] = 4; string[1] = 't'; string[2] = 'e'; string[3] = 's'; string[4] = 't';
-    cout << "String: ";
+    string_2[0] = 3; string_2[1] = 'b'; string_2[2] = 'e'; string_2[3] = 'd';
+
+    cout << "String - Regular: ";
+    four_four_output(string);
+    cout << endl;
+    cout << "String - Added '!': ";
+    four_four_append(string, '!');
+    four_four_output(string);
+    cout << endl;
+    cout << "Character at 3: ";
+    cout << four_four_character_at(string, 3);
+    cout << endl;
+    cout << "Concatenating with 'bed': ";
+    four_four_concatenate(string, string_2);
     four_four_output(string);
     cout << endl;
 }
+
+void Chapter4::funct1(char* ptr) { cout << "Char* ptr: " << &ptr << endl; }
+
+void Chapter4::funct2(char*& ptr) { cout << "Char* &ptr: " << &ptr << endl; }
+
+void Chapter4::funct3(char c) { cout << "Char c: " << c << endl; }
 

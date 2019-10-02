@@ -15,8 +15,6 @@ int main() {
     Chapter4 ch4 = Chapter4();
 
     ch4.four_four();
-
-
 }
 
 void four_three_input() {
