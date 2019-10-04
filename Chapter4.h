@@ -7,24 +7,33 @@ using namespace std;
 class Chapter4 {
 
 private:
-    typedef char* array_string;
-    int length (array_string);
+    
     struct list_node {
         int student_number;
         int grade;
         list_node *next;
     };
-    typedef list_node* student_collection;
-    typedef char* new_array;
     struct string_node {
         char c;
         string_node* next;
     };
+    struct int_node {
+        int number;
+        int_node* next;
+    };
+    typedef list_node* student_collection;
+    typedef char* array_string;
+    typedef char* new_array;
     typedef string_node* list_string;
+    typedef int_node* list_int;
+
     void print_list(student_collection);
     void remove_record(student_collection&, int);
     void print_linked(list_string);
     char linked_character_at(list_string, int);
+    int length(array_string);
+    void print_linked_int(list_int);
+    list_int int_to_list(int);
 
 public:
     void test_ref_param ();
@@ -45,5 +54,6 @@ public:
     void four_six();
     void linked_append(list_string&, list_string);
     void linked_remove_chars(list_string&, int, int);
+    void four_nine();
 };
 

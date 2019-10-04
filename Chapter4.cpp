@@ -247,6 +247,47 @@ void Chapter4::linked_remove_chars(list_string& source, int position, int length
     }
 }
 
+void Chapter4::print_linked_int(list_int integer) {
+
+    int_node* loop_ptr = integer;
+
+    while (loop_ptr != NULL) {
+        cout << loop_ptr->number;
+        loop_ptr = loop_ptr->next;
+    }
+}
+
+Chapter4::list_int Chapter4::int_to_list(int number_convert) {
+
+
+}
+
+void Chapter4::four_nine() {
+
+    list_int integer;
+    int number_convert;
+    list_int int_convert;
+
+    int_node* node1 = new int_node;
+    int_node* node2 = new int_node;
+    int_node* node3 = new int_node;
+
+    node1->number = 1;
+    node2->number = 4;
+    node3->number = 9;
+
+    integer = node1;
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = NULL;
+    node1 = node2 = node3 = NULL;
+
+    cout << "Linked number: ";
+    print_linked_int(integer);
+    cout << endl;   
+
+}
+
 void Chapter4::four_six() {
 
     list_string string;
