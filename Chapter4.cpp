@@ -226,6 +226,27 @@ void Chapter4::linked_append(list_string& source, list_string string) {
     }
 }
 
+void Chapter4::linked_remove_chars(list_string& source, int position, int length) {
+
+    string_node* next_holder = new string_node;
+
+    while (true) {
+        if (position == 0) {
+            if (length == 0) {
+                delete next_holder;
+                return;
+            }
+            next_holder = source->next;
+            source->next = next_holder->next;
+            next_holder = new string_node;
+            length--;
+        }
+        else {
+            position--;
+        }
+    }
+}
+
 void Chapter4::four_six() {
 
     list_string string;
@@ -270,6 +291,10 @@ void Chapter4::four_six() {
     cout << endl;
     cout << "Appeding 'bed': ";
     linked_append(string, string2);
+    print_linked(string);
+    cout << endl;
+    cout << "Removing 3 characters from position 2: ";
+    linked_remove_chars(string, 2, 3);
     print_linked(string);
     cout << endl;
 }

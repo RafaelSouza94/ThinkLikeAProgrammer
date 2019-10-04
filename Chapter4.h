@@ -44,5 +44,6 @@ public:
     void funct3(char); 
     void four_six();
     void linked_append(list_string&, list_string);
+    void linked_remove_chars(list_string&, int, int);
 };
 
