@@ -151,9 +151,9 @@ void Chapter4::remove_record(student_collection& sc, int number) {
 void Chapter4::linked_list() {
 
     Chapter4::student_collection sc;
-    Chapter4::list_node* node1 = new Chapter4::list_node;
-    Chapter4::list_node* node2 = new Chapter4::list_node;
-    Chapter4::list_node* node3 = new Chapter4::list_node;
+    list_node* node1 = new list_node;
+    list_node* node2 = new list_node;
+    list_node* node3 = new list_node;
 
     node1->student_number = 1001; node1->grade = 78;
     node2->student_number = 1012; node2->grade = 93;
@@ -164,7 +164,7 @@ void Chapter4::linked_list() {
     node3->next = NULL;
     node1 = node2 = node3 = NULL;  // To avoid cross-linking   
 
-    cout << "Current list: " << endl ;
+    cout << "Current list: " << endl;
     print_list(sc);
     cout << endl;
     add_record(sc, 1274, 91);
@@ -177,6 +177,101 @@ void Chapter4::linked_list() {
     cout << endl;
 
     //int avg = average_record(sc);
+}
+
+void Chapter4::print_linked(list_string string) {
+
+    string_node* loop_ptr = string;
+
+    while (loop_ptr != NULL) {
+        cout << loop_ptr->c;
+        loop_ptr = loop_ptr->next;
+    }
+}
+
+char Chapter4::linked_character_at(list_string string, int position) {
+
+    string_node* loop_ptr = string;
+    int counter = 1;
+
+    while (loop_ptr != NULL) {
+        if (counter == position) {
+            return loop_ptr->c;
+        }
+        counter++;
+        loop_ptr = loop_ptr->next;
+    }
+}
+
+void Chapter4::linked_append(list_string& source, list_string string) {
+
+    string_node* loop_ptr_source = source;
+    string_node* loop_ptr_string = string;
+    string_node* new_node = new string_node;
+
+    while (true) {
+        if (loop_ptr_source->next != NULL)
+            loop_ptr_source = loop_ptr_source->next;
+        else
+            break;        
+    }
+
+    while (loop_ptr_string != NULL) {
+        new_node->c = loop_ptr_string->c;
+        new_node->next = loop_ptr_string->next;
+        loop_ptr_source->next = new_node;
+        new_node = new string_node;
+        loop_ptr_source = loop_ptr_source->next;
+        loop_ptr_string = loop_ptr_string->next;
+    }
+}
+
+void Chapter4::four_six() {
+
+    list_string string;
+    list_string string2;
+
+    string_node* node1 = new string_node;
+    string_node* node2 = new string_node;
+    string_node* node3 = new string_node;
+    string_node* node4 = new string_node;
+
+    string_node* str2_node1 = new string_node;
+    string_node* str2_node2 = new string_node;
+    string_node* str2_node3 = new string_node;
+
+    node1->c = 't';
+    node2->c = 'e';
+    node3->c = 's';
+    node4->c = 't';
+
+    string = node1;
+    node1->next = node2;
+    node2->next = node3;
+    node3->next = node4;
+    node4->next = NULL;
+    node1 = node2 = node3 = node4 = NULL;
+
+    str2_node1->c = 'b';
+    str2_node2->c = 'e';
+    str2_node3->c = 'd';
+
+    string2 = str2_node1;
+    str2_node1->next = str2_node2;
+    str2_node2->next = str2_node3;
+    str2_node3->next = NULL;
+    str2_node1 = str2_node2 = str2_node3 = NULL;
+
+    cout << "String: ";
+    print_linked(string);
+    cout << endl;
+    cout << "Character at 3: ";
+    cout << linked_character_at(string, 3);
+    cout << endl;
+    cout << "Appeding 'bed': ";
+    linked_append(string, string2);
+    print_linked(string);
+    cout << endl;
 }
 
 Chapter4::array_string Chapter4::four_two(array_string string, int position, int length) {
@@ -328,4 +423,3 @@ void Chapter4::funct1(char* ptr) { cout << "Char* ptr: " << &ptr << endl; }
 void Chapter4::funct2(char*& ptr) { cout << "Char* &ptr: " << &ptr << endl; }
 
 void Chapter4::funct3(char c) { cout << "Char c: " << c << endl; }
-
