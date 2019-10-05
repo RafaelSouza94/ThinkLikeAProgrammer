@@ -259,7 +259,19 @@ void Chapter4::print_linked_int(list_int integer) {
 
 Chapter4::list_int Chapter4::int_to_list(int number_convert) {
 
+    list_int integer;
+    int_node* new_node = new int_node;
+    int_node* previous_node = new int_node;
+    int digit;
 
+    integer = new_node;
+
+    while (number_convert != 0) {
+        digit = number_convert % 10;
+        number_convert /= 10;
+        new_node->number = digit;
+        previous_node = new_node;
+    }
 }
 
 void Chapter4::four_nine() {

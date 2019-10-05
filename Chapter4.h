@@ -7,7 +7,6 @@ using namespace std;
 class Chapter4 {
 
 private:
-    
     struct list_node {
         int student_number;
         int grade;
