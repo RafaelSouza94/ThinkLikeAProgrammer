@@ -32,7 +32,7 @@ private:
     char linked_character_at(list_string, int);
     int length(array_string);
     void print_linked_int(list_int);
-    list_int int_to_list(int);
+    
 
 public:
     void test_ref_param ();
@@ -54,5 +54,6 @@ public:
     void linked_append(list_string&, list_string);
     void linked_remove_chars(list_string&, int, int);
     void four_nine();
+    list_int int_to_list(int);
 };
 
