@@ -146,6 +146,8 @@ void Chapter4::remove_record(student_collection& sc, int number) {
         previous_ptr = loop_ptr;
         loop_ptr = loop_ptr->next;
     }
+
+    delete loop_ptr;
 }
 
 void Chapter4::linked_list() {

@@ -5,6 +5,7 @@
 #include "Chapter2.h"
 #include "Chapter3.h"
 #include "Chapter4.h"
+#include "student_collection.h"
 
 using namespace std;
 
@@ -13,9 +14,16 @@ int main() {
     Chapter2 ch2 = Chapter2();
     Chapter3 ch3 = Chapter3();
     Chapter4 ch4 = Chapter4();
+    student_collection s;
 
-    ch4.four_nine();
-    ch4.int_to_list(0);
+    student_record stu_3(84, 1152, "Sue");
+    student_record stu_2(75, 4875, "Ed");
+    student_record stu_1(98, 2938, "Todd");
+
+    s.add_record(stu_3);
+    s.add_record(stu_2);
+    s.add_record(stu_1);
+    s.remove_record(4875);
 }
 
 void four_three_input() {
