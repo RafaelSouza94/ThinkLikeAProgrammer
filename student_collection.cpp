@@ -47,3 +47,47 @@ void student_collection::remove_record(int id_num) {
     }
     delete loop_ptr;
 }
+
+void student_collection::delete_list(student_list& list_ptr){
+
+    while (list_ptr != NULL) {
+        student_node* temp = list_ptr;
+        list_ptr = list_ptr->next;
+        delete temp;
+    }
+}
+
+student_collection::~student_collection(){
+    delete_list(_list_head);
+}
+
+student_collection::student_list student_collection::copied_list(const student_list original){
+
+    if (original == NULL) return NULL;
+
+    student_list new_list = new student_node;
+    new_list->student_data = original->student_data;
+    student_node* old_loop_ptr = original->next;
+    student_node* new_loop_ptr = new_list;
+    while (old_loop_ptr != NULL) {
+        new_loop_ptr->next = new student_node;
+        new_loop_ptr = new_loop_ptr->next;
+        new_loop_ptr->student_data = old_loop_ptr->student_data;
+        old_loop_ptr = old_loop_ptr->next;
+    }
+    new_loop_ptr->next = NULL;
+    return new_list;
+}
+
+student_collection& student_collection::operator=(const student_collection& rhs){
+    
+    if (this != &rhs) {
+        delete_list(_list_head);
+        _list_head = copied_list(rhs._list_head);
+    }
+    return *this;
+}
+
+student_collection::student_collection(const student_collection& original){
+    _list_head = copied_list(original._list_head);
+}
