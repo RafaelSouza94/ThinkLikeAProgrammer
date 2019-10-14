@@ -6,6 +6,7 @@
 #include "Chapter3.h"
 #include "Chapter4.h"
 #include "student_collection.h"
+#include "automobile.h"
 
 using namespace std;
 
@@ -14,8 +15,10 @@ int main() {
     Chapter2 ch2 = Chapter2();
     Chapter3 ch3 = Chapter3();
     Chapter4 ch4 = Chapter4();
-    student_collection s;
+    //student_collection s;
+    automobile car = automobile("Pesadas", "Tretas", 1994);
 
+    /*
     student_record stu_3(84, 1152, "Sue");
     student_record stu_2(75, 4875, "Ed");
     student_record stu_1(98, 2938, "Todd");
@@ -23,7 +26,10 @@ int main() {
     s.add_record(stu_3);
     s.add_record(stu_2);
     s.add_record(stu_1);
-    s.remove_record(4875);
+    s.remove_record(4875);*/
+
+    cout << "Car: " << car.get_car() << endl;
+    cout << "Age: " << car.get_age() << endl;
 }
 
 void four_three_input() {

@@ -27,6 +27,12 @@
     <ClCompile Include="Chapter4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="automobile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="linked_string.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chapter2.h">
@@ -36,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Chapter4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="automobile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="linked_string.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

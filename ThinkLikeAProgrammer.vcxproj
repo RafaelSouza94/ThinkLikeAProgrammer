@@ -151,15 +151,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="automobile.cpp" />
     <ClCompile Include="Chapter2.cpp" />
     <ClCompile Include="Chapter3.cpp" />
     <ClCompile Include="Chapter4.cpp" />
+    <ClCompile Include="linked_string.cpp" />
     <ClCompile Include="ThinkLikeAProgrammer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="automobile.h" />
     <ClInclude Include="Chapter2.h" />
     <ClInclude Include="Chapter3.h" />
     <ClInclude Include="Chapter4.h" />
+    <ClInclude Include="linked_string.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
